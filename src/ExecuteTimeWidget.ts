@@ -52,16 +52,7 @@ export default class ExecuteTimeWidget extends Widget {
         // We only do this once (not on every settings update) in case the user tries to trun it off
         if (settings.get('enabled').composite) {
           this._settingRegistry
-            .load('@jupyterlab/notebook-extension:tracker')
-            .then(
-              (nbSettings: ISettingRegistry.ISettings) =>
-                nbSettings.set('recordTiming', true),
-              (err: Error) => {
-                console.error(
-                  `jupyterlab-execute-time: Could not force metadata recording: ${err}`
-                );
-              }
-            );
+            .load('@jupyterlab/notebook-extension:tracker');
         }
       },
       (err: Error) => {
